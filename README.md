@@ -1,2 +1,2 @@
 # Visalgo
-Ever needed to visual algorithms? This is the place to do it!
+Ever needed to visualize algorithms? This is the place to do it!
