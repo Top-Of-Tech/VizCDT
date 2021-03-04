@@ -22,7 +22,6 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
 body, html {
   height: 100%;
   line-height: 1.8;
-  background-image: url("background.jpg");
 }
 .w3-bar .w3-button {
   padding: 16px;
@@ -174,105 +173,127 @@ footer {
             color: black !important;
         }
 
-</style>
-<div class="topnav">
-  <a class="active" href="index.html">Home</a>
-  <a class = "active" href="algorithm.html">Algorithms</a>
-  <a class = "active" href="postalgorithm.html">Post your Algorithm</a>
+        .background {
+            background-image: url("background.jpg");
+            position: absolute;
+            width: 100vw;
+            height: 100vh;
 
-  <div class="search-container">
-    <form action="/action_page.php">
-      <input type="text" placeholder="Search.." name="search">
-      <button type="submit"><i class="fa fa-search"></i></button>
-    </form>
-  </div>
-</div>
-
-<div id="form">
-    <h1>Post Your Algorithm</h1>
-    <label for="algoname">Algorithm Name</label>
-    <br>
-    <input type="text" id="algoname" onkeyup="nospaces(this)">
-    <hr>
-    <label for="desc">Explanation</label>
-    <br>
-    <textarea id="desc" cols="30" rows="10"></textarea>
-    <hr>
-    <input type="file" value="upload" id="fileButton">
-    <hr>
-    <progress value="0" max="100" id="uploader">0%</progress>
-    <hr>
-    <button id="submit">Submit</button>
-    <p id="complete" style="color: limegreen; display: none;">Upload succesful</p>
-</div>
-
-<script src="https://smtpjs.com/v3/smtp.js"></script>
-
-<!-- The core Firebase JS SDK is always required and must be listed first -->
-<script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-storage.js"></script>
-
-<script>
-// Your web app's Firebase configuration
-var firebaseConfig = {
-apiKey: "AIzaSyBMKrjXsTQfLSQ8hsvkMI3h4dG5LOyotlM",
-authDomain: "visualize-1555b.firebaseapp.com",
-projectId: "visualize-1555b",
-storageBucket: "visualize-1555b.appspot.com",
-messagingSenderId: "940227136617",
-appId: "1:940227136617:web:e49a24fee86f0cace3a6f8"
-};
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
-
-const uploader = document.getElementById("uploader");
-const fileButton = document.getElementById("fileButton");
-const submitButton = document.getElementById("submit");
-const algoname = document.getElementById("algoname");
-const desc = document.getElementById("desc");
-
-submitButton.addEventListener("click", function() {
-    //Get file
-    var file = fileButton.files[0];
-
-    //Create a storage ref
-    var storageRef = firebase.storage().ref("AlgoSubmitions/" + algoname.value + ".py");
-
-    //Upload file
-    var task = storageRef.put(file);
-
-    //Update progress bar
-    task.on("state_changed",
-    
-        function progress(snapshot) {
-            var percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-            uploader.value = percentage;
-        },
-
-        function error(err) {
-
-        },
-
-        function complete() {
-            document.getElementById("complete").style.display = "inline";
-
-            Email.send({
-            SecureToken : "0ed586fd-2fef-4771-a8f5-2920edc3b16b",
-            To : 'visalgorithm@gmail.com',
-            From : "visalgorithm@gmail.com",
-            Subject : "Algorithm Submition",
-            Body : `<strong>The algorithm name is:</strong> <br> ${algoname.value} <br> <br> <strong>File location:</strong> shorturl.at/xzKMO <br> <br> <strong>Explanation:</strong> <br> ${desc.value}`
-            }).then(
-            
-            );
         }
 
-    );
-});
+        .layer {
+            background-color: rgba(0, 0, 0, 0.7);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+</style>
+<div class="background">
+    <div class="layer">
+    
 
-function nospaces(t){
-    if(t.value.match(/\s/g)){
-        t.value=t.value.replace(/\s/g,'');
-    }
-}
-</script>
+        <div class="topnav">
+        <a class="active" href="index.html">Home</a>
+        <a class = "active" href="algorithm.html">Algorithms</a>
+        <a class = "active" href="postalgorithm.html">Post your Algorithm</a>
+
+        <div class="search-container">
+            <form action="/action_page.php">
+            <input type="text" placeholder="Search.." name="search">
+            <button type="submit"><i class="fa fa-search"></i></button>
+            </form>
+        </div>
+        </div>
+
+        <div id="form">
+            <h1>Post Your Algorithm</h1>
+            <label for="algoname">Algorithm Name</label>
+            <br>
+            <input type="text" id="algoname" onkeyup="nospaces(this)">
+            <hr>
+            <label for="desc">Explanation</label>
+            <br>
+            <textarea id="desc" cols="30" rows="10"></textarea>
+            <hr>
+            <input type="file" value="upload" id="fileButton">
+            <hr>
+            <progress value="0" max="100" id="uploader">0%</progress>
+            <hr>
+            <button id="submit">Submit</button>
+            <p id="complete" style="color: limegreen; display: none;">Upload succesful</p>
+        </div>
+
+        <script src="https://smtpjs.com/v3/smtp.js"></script>
+
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-storage.js"></script>
+
+        <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+        apiKey: "AIzaSyBMKrjXsTQfLSQ8hsvkMI3h4dG5LOyotlM",
+        authDomain: "visualize-1555b.firebaseapp.com",
+        projectId: "visualize-1555b",
+        storageBucket: "visualize-1555b.appspot.com",
+        messagingSenderId: "940227136617",
+        appId: "1:940227136617:web:e49a24fee86f0cace3a6f8"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        const uploader = document.getElementById("uploader");
+        const fileButton = document.getElementById("fileButton");
+        const submitButton = document.getElementById("submit");
+        const algoname = document.getElementById("algoname");
+        const desc = document.getElementById("desc");
+
+        submitButton.addEventListener("click", function() {
+            //Get file
+            var file = fileButton.files[0];
+
+            //Create a storage ref
+            var storageRef = firebase.storage().ref("AlgoSubmitions/" + algoname.value + ".py");
+
+            //Upload file
+            var task = storageRef.put(file);
+
+            //Update progress bar
+            task.on("state_changed",
+            
+                function progress(snapshot) {
+                    var percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                    uploader.value = percentage;
+                },
+
+                function error(err) {
+
+                },
+
+                function complete() {
+                    document.getElementById("complete").style.display = "inline";
+
+                    Email.send({
+                    SecureToken : "0ed586fd-2fef-4771-a8f5-2920edc3b16b",
+                    To : 'visalgorithm@gmail.com',
+                    From : "visalgorithm@gmail.com",
+                    Subject : "Algorithm Submition",
+                    Body : `<strong>The algorithm name is:</strong> <br> ${algoname.value} <br> <br> <strong>File location:</strong> shorturl.at/xzKMO <br> <br> <strong>Explanation:</strong> <br> ${desc.value}`
+                    }).then(
+                    
+                    );
+                }
+
+            );
+        });
+
+        function nospaces(t){
+            if(t.value.match(/\s/g)){
+                t.value=t.value.replace(/\s/g,'');
+            }
+        }
+        </script>
+    </div>
+</div>
