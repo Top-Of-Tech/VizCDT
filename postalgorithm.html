@@ -139,7 +139,7 @@ footer {
 
         #fileButton{
             font-size: 15px;
-            width: 200px;
+            width: 210px;
             display: inline;
         }
 
@@ -211,11 +211,11 @@ footer {
             <h1>Post Your Algorithm</h1>
             <label for="algoname">Algorithm Name</label>
             <br>
-            <input type="text" id="algoname" onkeyup="nospaces(this)">
+            <input type="text" id="algoname" onkeyup="nospaces(this)" placeholder="Name">
             <hr>
             <label for="desc">Explanation</label>
             <br>
-            <textarea id="desc" cols="30" rows="10"></textarea>
+            <textarea id="desc" cols="30" rows="10" placeholder="Explanation of Algorithm"></textarea>
             <hr>
             <input type="file" value="upload" id="fileButton">
             <hr>
@@ -282,7 +282,7 @@ footer {
                     Subject : "Algorithm Submition",
                     Body : `<strong>The algorithm name is:</strong> <br> ${algoname.value} <br> <br> <strong>File location:</strong> shorturl.at/xzKMO <br> <br> <strong>Explanation:</strong> <br> ${desc.value}`
                     }).then(
-                      console.log("Mail is sent")
+                    
                     );
                 }
 
