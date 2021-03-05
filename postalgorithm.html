@@ -189,6 +189,47 @@ footer {
             width: 100%;
             height: 100%;
         }
+
+        #overlay{
+            position: fixed; /* Sit on top of the page content */
+            display: block; /* Hidden by default */
+            width: 65%; /* Full width (cover the whole page) */
+            height: 75%; /* Full height (cover the whole page) */
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(255, 255, 255, 1); /* Black background with opacity */
+            z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+            text-align: center;
+            border-radius: 50px;
+            -webkit-box-shadow: 0 0 20px 2px #fff;
+            -moz-box-shadow: 0 0 20px 2px #fff;
+            box-shadow: 0 0 20px 2px #fff;
+            margin: auto;
+            padding: 10px;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: 999;
+            visibility: hidden;
+            opacity: 0;
+            transition: visibility 0s, opacity 0.5s linear;
+        }
+
+        #howsubmit{
+            color: white;
+        }
+
+        #howsubmit:hover{
+            color: rgb(163, 163, 163);
+        }
+
+        #x{
+            color: black;
+        }
+
+        #x:hover{
+            color: rgb(143, 143, 143);
+        }
 </style>
 <div class="background">
     <div class="layer">
@@ -217,12 +258,33 @@ footer {
             <br>
             <textarea id="desc" cols="30" rows="10" placeholder="Explanation of Algorithm"></textarea>
             <hr>
-            <input type="file" value="upload" id="fileButton">
+            <input type="file" value="upload" id="fileButton" accept=".zip">
             <hr>
             <progress value="0" max="100" id="uploader">0%</progress>
             <hr>
             <button id="submit">Submit</button>
             <p id="complete" style="color: limegreen; display: none;">Upload succesful</p>
+            <hr>
+            <a href="javascript:overlayToggle()" id="howsubmit" style="text-decoration: none;"><strong style="text-decoration: none;">How to upload & submit ?</strong></a>
+        </div>
+
+        <div id="overlay">
+            <a href="javascript:overlayToggle()" id="x" style="text-decoration: none;"><h1 style="text-align: right; margin-right: 50px; margin-top: 30px; cursor: pointer; font-family:Georgia, 'Times New Roman', Times, serif !important">X</h1></a>
+            <br>
+            <br>
+            <br>
+            <p>Use winrar or 7zip to make a zip file containing the below</p>
+            <img src="./pyandimg.png">
+            <br>
+            <h2 style="display: inline; margin-right: 100px;">Image (1024 x 683)</h2>
+            <h2 style="display: inline;">algorithm.py file</h2>
+            <br>
+            <br>
+            <br>
+            <p>After that fill in the form with a good name and precise explanation/description</p>
+            <br>
+            <br>
+            <p>Then upload the .zip file and press submit</p>
         </div>
 
         <script src="https://smtpjs.com/v3/smtp.js"></script>
@@ -232,6 +294,18 @@ footer {
         <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-storage.js"></script>
 
         <script>
+
+        function overlayToggle() {
+            var x = document.getElementById("overlay");
+            if (x.style.visibility === "visible") {
+                x.style.visibility = "hidden";
+                x.style.opacity = "0";
+            } else {
+                x.style.visibility = "visible";
+                x.style.opacity = "1";
+            }
+        }
+
         // Your web app's Firebase configuration
         var firebaseConfig = {
         apiKey: "AIzaSyBMKrjXsTQfLSQ8hsvkMI3h4dG5LOyotlM",
@@ -255,7 +329,7 @@ footer {
             var file = fileButton.files[0];
 
             //Create a storage ref
-            var storageRef = firebase.storage().ref("AlgoSubmitions/" + algoname.value + ".py");
+            var storageRef = firebase.storage().ref("AlgoSubmitions/" + algoname.value + ".zip");
 
             //Upload file
             var task = storageRef.put(file);
