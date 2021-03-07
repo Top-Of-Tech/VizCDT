@@ -17,8 +17,7 @@
       <div id="unityContainer" style="width: 100vw; height: 100vh"></div>
     </div>
     <script>
-        const div = document.getElementById("unityContainer");
-        div.onkeydown = function(evt) {
+        this.onkeydown = function(evt) {
             evt = evt || window.event;
             if (evt.keyCode == 27) {
                 window.open("https://top-of-tech.github.io/VizCDT/index.html","_self")
