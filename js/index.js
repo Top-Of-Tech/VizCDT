@@ -11,7 +11,7 @@ setTimeout(function() {
 window.addEventListener("scroll", function (e) {
     scrollTop = window.pageYOffset !== undefined ? window.pageYOffset : (document.documentElement || document.body.parentNode || document.body).scrollTop;
     console.log(scrollTop);
-    if (innerHeight <= 1000) {
+    if (innerHeight >= 1000) {
         if (scrollTop < 950 && scrollTop > 500) {
             const how_to_use_text = document.querySelectorAll("#how-to-use");
     
@@ -28,7 +28,7 @@ window.addEventListener("scroll", function (e) {
         }
     }
 
-    else if (innerHeight <= 900) {
+    else if (innerHeight >= 900) {
         if (scrollTop < 950 && scrollTop > 500) {
             const how_to_use_text = document.querySelectorAll("#how-to-use");
     
@@ -45,7 +45,7 @@ window.addEventListener("scroll", function (e) {
         }
     }
 
-    else if (innerHeight <= 800) {
+    else if (innerHeight >= 800) {
         if (scrollTop < 950 && scrollTop > 500) {
             const how_to_use_text = document.querySelectorAll("#how-to-use");
     
@@ -62,7 +62,7 @@ window.addEventListener("scroll", function (e) {
         }
     }
 
-    else if (innerHeight <= 700) {
+    else if (innerHeight >= 700) {
         if (scrollTop < 950 && scrollTop > 500) {
             const how_to_use_text = document.querySelectorAll("#how-to-use");
     
