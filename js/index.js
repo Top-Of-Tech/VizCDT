@@ -18,11 +18,11 @@ window.addEventListener("scroll", function (e) {
             how_to_use_text[i].classList.add("is-active");
         }
     }
-    else if (scrollTop <= 1878 && scrollTop > 1478) {
+    else if (scrollTop <= 1878 && scrollTop > 1378) {
         const about_us_text = document.querySelectorAll("#about-us");
 
         for (i = 0; i < about_us_text.length; i++) {
             about_us_text[i].classList.add("is-active");
         }
     }
-  });
+});
