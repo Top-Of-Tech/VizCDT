@@ -3,16 +3,21 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
 body, html {
   height: 100%;
   line-height: 1.8;
-  overflow: scroll;
-  overflow-x: hidden;
-}
-::-webkit-scrollbar {
-  width: 0;
-  background: transparent;
 }
 
+::-webkit-scrollbar {
+  width: 7px;
+}
+::-webkit-scrollbar-track {
+  background: #666;
+  border-radius: 5px;
+}
 ::-webkit-scrollbar-thumb {
-  background: #FF0000;
+  background: #ccc;
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #ddd;
 }
 
 .bgimg-1 {

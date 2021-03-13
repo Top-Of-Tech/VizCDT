@@ -10,7 +10,7 @@ setTimeout(function() {
 
 window.addEventListener("scroll", function (e) {
     scrollTop = window.pageYOffset !== undefined ? window.pageYOffset : (document.documentElement || document.body.parentNode || document.body).scrollTop;
-
+    console.log(scrollTop);
     if (scrollTop < 950 && scrollTop > 800) {
         const how_to_use_text = document.querySelectorAll("#how-to-use");
 
