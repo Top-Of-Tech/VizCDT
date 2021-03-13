@@ -1,239 +1,31 @@
 <!DOCTYPE html>
 <html>
 <title>Visalgo</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link id="theme" rel="stylesheet" type="text/css" href="light-theme.css" />
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link id="theme" rel="stylesheet" type="text/css" href="light-theme.css" />
 
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/PostAlgorithm.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<!-- Favicon -->
-<link rel="shortcut icon" href="logo.png">
-<style>
-body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
+  <script src="js/transition.js"></script>
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="logo.png">
+</head>
 
-body, html {
-  height: 100%;
-  line-height: 1.8;
-}
-.w3-bar .w3-button {
-  padding: 16px;
-}
-.topnav {
-  overflow: hidden;
-  background-color: black;
-}
 
-.topnav a {
-  float: left;
-  display: block;
-  color: black;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 17px;
-}
-
-.topnav a:hover {
-  background-color: #ddd;
-  color: black;
-}
-
-.topnav a.active {
-
-  color: white;
-}
-
-.topnav .search-container {
-  float: right;
-}
-
-.topnav input[type=text] {
-  padding: 6px;
-  margin-top: 8px;
-  font-size: 17px;
-  border: none;
-}
-
-.topnav .search-container button {
-  float: right;
-  padding: 6px 6px;
-  margin-top: 8px;
-  margin-right: 16px;
-  background: #ddd;
-  font-size: 17px;
-  border: none;
-  cursor: pointer;
-}
-    #allOptions div{
-            font-size: 50px;
-        }
-
-        #allOptions a{
-            text-decoration: none;
-            color: black;
-        }
-.topnav .search-container button:hover {
-  background: #ccc;
-}
-
-@media screen and (max-width: 600px) {
-  .topnav .search-container {
-    float: none;
-  }
-  .topnav a, .topnav input[type=text], .topnav .search-container button {
-    float: none;
-    display: block;
-    text-align: left;
-    width: 100%;
-    margin: 0;
-    padding: 29px;
-  }
-  .topnav input[type=text] {
-    border: 1px solid #ccc;  
-  }
-}
-    /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
-.row.content {height: 1500px}
-    
-    /* Set gray background color and 100% height */
-.sidenav {
-  background-color: #f1f1f1;
-  height: 100%;
-}
-    
-/* Set black background color, white text and some padding */
-footer {
-  background-color: #555;
-  color: white;
-  padding: 15px;
-}
-    
-    /* On small screens, set height to 'auto' for sidenav and grid */
-    @media screen and (max-width: 767px) {
-      .sidenav {
-        height: auto;
-        padding: 15px;
-      }
-      .row.content {height: auto;} 
-    }
-    
-        #form{
-            color: white !important;
-            text-align: center !important;
-            margin-top: 100px;
-        }
-
-        h1{
-            margin: 10px;
-            padding: 0px;
-            font-size: 40px;
-        }
-
-        #fileButton{
-            font-size: 15px;
-            width: 210px;
-            display: inline;
-        }
-
-        hr{
-            border: none;
-            margin: 5px;
-        }
-        
-        button{
-            padding: 10px;
-            color: black !important;
-        }
-
-        progress{
-            width: 400px;
-            padding: 20px;
-        }
-
-        label{
-            font-size: 20px;
-        }
-
-        #algoname{
-            width: 150px;
-            color: black !important;
-        }
-
-        #desc{
-            width: 300px;
-            height: 100px;
-            color: black !important;
-        }
-
-        .background {
-            background-image: url("background.jpg");
-            position: absolute;
-            width: 100vw;
-            height: 100vh;
-
-        }
-
-        .layer {
-            background-color: rgba(0, 0, 0, 0.35);
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-
-        #overlay{
-            position: fixed; /* Sit on top of the page content */
-            display: block; /* Hidden by default */
-            width: 65%; /* Full width (cover the whole page) */
-            height: 75%; /* Full height (cover the whole page) */
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(255, 255, 255, 1); /* Black background with opacity */
-            z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
-            text-align: center;
-            border-radius: 50px;
-            -webkit-box-shadow: 0 0 20px 2px #fff;
-            -moz-box-shadow: 0 0 20px 2px #fff;
-            box-shadow: 0 0 20px 2px #fff;
-            margin: auto;
-            padding: 10px;
-            font-family: 'Courier New', Courier, monospace;
-            font-weight: 999;
-            visibility: hidden;
-            opacity: 0;
-            transition: visibility 0s, opacity 0.5s linear;
-        }
-
-        #howsubmit{
-            color: white;
-        }
-
-        #howsubmit:hover{
-            color: rgb(163, 163, 163);
-        }
-
-        #x{
-            color: black;
-        }
-
-        #x:hover{
-            color: rgb(143, 143, 143);
-        }
-</style>
 <div class="background">
     <div class="layer">
     
+        <div class="transition is-active"></div>
 
         <div class="topnav">
         <a class="active" href="index.html">Home</a>
@@ -274,7 +66,7 @@ footer {
             <br>
             <br>
             <p>Use winrar or 7zip to make a zip file containing the below</p>
-            <img src="pyandimg.png">
+            <img src="images/PostAlgorithmPyAndImg.png">
             <br>
             <h2 style="display: inline; margin-right: 100px;">Image (1024 x 683)</h2>
             <h2 style="display: inline;">algorithm.py file</h2>
@@ -293,81 +85,6 @@ footer {
         <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-storage.js"></script>
 
-        <script>
-
-        function overlayToggle() {
-            var x = document.getElementById("overlay");
-            if (x.style.visibility === "visible") {
-                x.style.visibility = "hidden";
-                x.style.opacity = "0";
-            } else {
-                x.style.visibility = "visible";
-                x.style.opacity = "1";
-            }
-        }
-
-        // Your web app's Firebase configuration
-        var firebaseConfig = {
-        apiKey: "AIzaSyBMKrjXsTQfLSQ8hsvkMI3h4dG5LOyotlM",
-        authDomain: "visualize-1555b.firebaseapp.com",
-        projectId: "visualize-1555b",
-        storageBucket: "visualize-1555b.appspot.com",
-        messagingSenderId: "940227136617",
-        appId: "1:940227136617:web:e49a24fee86f0cace3a6f8"
-        };
-        // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
-
-        const uploader = document.getElementById("uploader");
-        const fileButton = document.getElementById("fileButton");
-        const submitButton = document.getElementById("submit");
-        const algoname = document.getElementById("algoname");
-        const desc = document.getElementById("desc");
-
-        submitButton.addEventListener("click", function() {
-            //Get file
-            var file = fileButton.files[0];
-
-            //Create a storage ref
-            var storageRef = firebase.storage().ref("AlgoSubmitions/" + algoname.value + ".zip");
-
-            //Upload file
-            var task = storageRef.put(file);
-
-            //Update progress bar
-            task.on("state_changed",
-            
-                function progress(snapshot) {
-                    var percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-                    uploader.value = percentage;
-                },
-
-                function error(err) {
-
-                },
-
-                function complete() {
-                    document.getElementById("complete").style.display = "inline";
-
-                    Email.send({
-                    SecureToken : "0ed586fd-2fef-4771-a8f5-2920edc3b16b",
-                    To : 'visalgorithm@gmail.com',
-                    From : "visalgorithm@gmail.com",
-                    Subject : "Algorithm Submition",
-                    Body : `<strong>The algorithm name is:</strong> <br> ${algoname.value} <br> <br> <strong>File location:</strong> shorturl.at/xzKMO <br> <br> <strong>Explanation:</strong> <br> ${desc.value}`
-                    }).then(
-                    
-                    );
-                }
-
-            );
-        });
-
-        function nospaces(t){
-            if(t.value.match(/\s/g)){
-                t.value=t.value.replace(/\s/g,'');
-            }
-        }
-        </script>
+        <script src="js/PostAlgorithm.js"></script>
     </div>
 </div>
