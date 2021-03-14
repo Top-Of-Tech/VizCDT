@@ -1,4 +1,4 @@
-<img src="https://github.com/Top-Of-Tech/VizCDT/blob/main/logo.png?raw=true" alt="Logo">
+<img src="https://github.com/Top-Of-Tech/VizCDT/blob/main/src/images/Favicon.png?raw=true" alt="Logo">
 
 # VizCDT
 VizCDT is a website to help you learn algorithms. It also has a variaty of simulations to choose from, as well as several tools, such as a drawing tool.
