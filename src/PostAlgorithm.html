@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<title>Visalgo</title>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link id="theme" rel="stylesheet" type="text/css" href="light-theme.css" />
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/PostAlgorithm.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="js/transition.js"></script>
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="images/Favicon.png">
+</head>
+
+
+<div class="background">
+    <div class="layer">
+        <div class="transition is-active"></div>
+            <div class="topnav">
+            <a class="active" href="index.html">Home</a>
+            <a class = "active" href="algorithm.html">Algorithms</a>
+            <a class = "active" href="postalgorithm.html">Post your Algorithm</a>
+        </div>
+
+        <div id="form">
+            <h1>Post Your Algorithm</h1>
+            <label for="algoname">Algorithm Name</label>
+            <br>
+            <input type="text" id="algoname" onkeyup="nospaces(this)" placeholder="Name">
+            <hr>
+            <label for="desc">Explanation</label>
+            <br>
+            <textarea id="desc" cols="30" rows="10" placeholder="Explanation of Algorithm"></textarea>
+            <hr>
+            <input type="file" value="upload" id="fileButton" accept=".zip">
+            <hr>
+            <progress value="0" max="100" id="uploader">0%</progress>
+            <hr>
+            <button id="submit">Submit</button>
+            <p id="complete" style="color: limegreen; display: none;">Upload succesful</p>
+            <hr>
+            <a href="javascript:overlayToggle()" id="howsubmit" style="text-decoration: none;"><strong style="text-decoration: none;">How to upload & submit ?</strong></a>
+        </div>
+
+        <div id="overlay">
+            <a href="javascript:overlayToggle()" id="x" style="text-decoration: none;"><h1 style="text-align: right; margin-right: 50px; margin-top: 30px; cursor: pointer; font-family:Georgia, 'Times New Roman', Times, serif !important">X</h1></a>
+            <br>
+            <br>
+            <br>
+            <p>Use winrar or 7zip to make a zip file containing the below</p>
+            <img src="images/PostAlgorithmPyAndImg.png">
+            <br>
+            <h2 style="display: inline; margin-right: 100px;">Image (1024 x 683)</h2>
+            <h2 style="display: inline;">algorithm.py file</h2>
+            <br>
+            <br>
+            <br>
+            <p>After that fill in the form with a good name and precise explanation/description</p>
+            <br>
+            <br>
+            <p>Then upload the .zip file and press submit</p>
+        </div>
+
+        <script src="https://smtpjs.com/v3/smtp.js"></script>
+
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-storage.js"></script>
+
+        <script src="js/PostAlgorithm.js"></script>
+    </div>
+</div>
