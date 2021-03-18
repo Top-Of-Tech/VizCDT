@@ -14,14 +14,14 @@ if (innerHeight >= 700) {
         scrollTop = window.pageYOffset !== undefined ? window.pageYOffset : (document.documentElement || document.body.parentNode || document.body).scrollTop;
         console.log(scrollTop);
         if (innerHeight >= 1000) {
-            if (scrollTop < 950 && scrollTop > 500) {
+            if (scrollTop < 950 && scrollTop > 600) {
                 const how_to_use_text = document.querySelectorAll("#how-to-use");
         
                 for (i = 0; i < how_to_use_text.length; i++) {
                     how_to_use_text[i].classList.add("is-active");
                 }
             }
-            else if (scrollTop <= 2000 && scrollTop > 1600) {
+            else if (scrollTop <= 2000 && scrollTop > 1700) {
                 const about_us_text = document.querySelectorAll("#about-us");
         
                 for (i = 0; i < about_us_text.length; i++) {
@@ -31,7 +31,7 @@ if (innerHeight >= 700) {
         }
     
         else if (innerHeight >= 900) {
-            if (scrollTop < 850 && scrollTop > 450) {
+            if (scrollTop < 850 && scrollTop > 550) {
                 const how_to_use_text = document.querySelectorAll("#how-to-use");
         
                 for (i = 0; i < how_to_use_text.length; i++) {
@@ -39,7 +39,7 @@ if (innerHeight >= 700) {
                     console.log(how_to_use_text[i])
                 }
             }
-            else if (scrollTop <= 1800 && scrollTop > 1400) {
+            else if (scrollTop <= 1800 && scrollTop > 1500) {
                 const about_us_text = document.querySelectorAll("#about-us");
         
                 for (i = 0; i < about_us_text.length; i++) {
@@ -49,14 +49,14 @@ if (innerHeight >= 700) {
         }
     
         else if (innerHeight >= 800) {
-            if (scrollTop < 750 && scrollTop > 400) {
+            if (scrollTop < 750 && scrollTop > 500) {
                 const how_to_use_text = document.querySelectorAll("#how-to-use");
         
                 for (i = 0; i < how_to_use_text.length; i++) {
                     how_to_use_text[i].classList.add("is-active");
                 }
             }
-            else if (scrollTop <= 1600 && scrollTop > 1200) {
+            else if (scrollTop <= 1600 && scrollTop > 1300) {
                 const about_us_text = document.querySelectorAll("#about-us");
         
                 for (i = 0; i < about_us_text.length; i++) {
@@ -66,14 +66,14 @@ if (innerHeight >= 700) {
         }
     
         else if (innerHeight >= 700) {
-            if (scrollTop < 700 && scrollTop > 350) {
+            if (scrollTop < 700 && scrollTop > 450) {
                 const how_to_use_text = document.querySelectorAll("#how-to-use");
         
                 for (i = 0; i < how_to_use_text.length; i++) {
                     how_to_use_text[i].classList.add("is-active");
                 }
             }
-            else if (scrollTop <= 1400 && scrollTop > 1000) {
+            else if (scrollTop <= 1400 && scrollTop > 900) {
                 const about_us_text = document.querySelectorAll("#about-us");
         
                 for (i = 0; i < about_us_text.length; i++) {

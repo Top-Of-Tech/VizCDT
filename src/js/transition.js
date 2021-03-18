@@ -1,6 +1,6 @@
 window.onload = () => {
     const transition = document.querySelector(".transition");
-    const nav_links = document.querySelectorAll(".topnav a")
+    const nav_links = document.querySelectorAll(".navbar a")
 
     // Stop the transition
     setTimeout (() => {

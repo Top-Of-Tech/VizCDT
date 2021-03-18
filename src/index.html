@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<title>Visalgo</title>
+<title>VizCDT</title>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,28 +18,28 @@
   <!-- Transition -->
   <div class="transition is-active"></div>
 
-  <!-- Navbar -->
-  <div class="w3-top">
-    <div class="w3-bar w3-black w3-card" id="myNavbar">
-  <div class="topnav">
-    <a class="active" href="index.html">Home</a>
-    <a class = "active" href="algorithm.html">Algorithms</a>
-    <a class = "active" href="PostAlgorithm.html">Post your Algorithm</a>
-  </div>
-      <!-- Hide right-floated links on small screens and replace them with a menu icon -->
-
-      <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="w3_open()">
-        <i class="fa fa-bars"></i>
-      </a>
+  <div class="navbar">
+    <a href="index.html">Home</a>
+    <div class="dropdown">
+      <button class="dropbtn">Algorithms
+        <i class=""></i>
+      </button>
+      <div class="dropdown-content">
+        <a href="algorithm.html">Algorithm Homepage</a>
+        <a href="postalgorithm.html">Post your Algorithm</a>
+  
+      </div>
+    </div>
+   <div class="dropdown">
+      <button class="dropbtn">Stimulations
+        <i class=""></i>
+      </button>
+      <div class="dropdown-content">
+        <a href="solarsystem.html">Solar System</a>
+      
+      </div>
     </div>
   </div>
-
-  <!-- For phone users navbar -->
-  <nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-medium w3-hide-large" style="display:none" id="mySidebar">
-    <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16">Close ×</a>
-   	<a href="index.html" class="w3-bar-item w3-button"></i>Home</a>
-  	<a href="algorithms.html" class="w3-bar-item w3-button"></i>Algorithms</a>
-  </nav>
 
   <!-- First page -->
   <header class="bgimg-1 w3-display-container w3-grayscale-min" >
@@ -65,8 +65,8 @@
   <header class="bgimg-3 w3-display-container w3-grayscale-min" >
     <div class="w3-display-left w3-text-white" style="padding:48px" data-aos="fade-bottom">
       <span class="w3-jumbo w3-hide-small" id="about-us">About us</span><br>
-      <span class="w3-large" id="about-us">Front end developer/Algorithm designer: dillythecoder#3933 <br> Algorithm designer: Top Of Tech
-  #4867<br> Front end developer/Algorithm Desginer: CodeZhifty#5155</span>
+      <span class="w3-large" id="about-us">Front end developer/Algorithm designer: dillythecoder#3933 <br> Front end developer/Algorithm designer: Top Of Tech 
+      #4867<br> Front end developer: CodeZhifty#5155</span>
 
     </div> 
     <div class="w3-display-bottomleft w3-text-grey w3-large" style="padding:24px 48px">
