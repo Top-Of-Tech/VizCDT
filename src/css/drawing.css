@@ -1,54 +1,8 @@
-body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
-
-body, html {
-  height: 100%;
-  line-height: 1.8;
+body {
+  margin: 0;
+  padding: 0;
 }
 
-::-webkit-scrollbar {
-  width: 7px;
-}
-::-webkit-scrollbar-track {
-  background: #666;
-  border-radius: 5px;
-}
-::-webkit-scrollbar-thumb {
-  background: #ccc;
-  border-radius: 5px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #ddd;
-}
-
-.bgimg-1 {
-  background-position: center;
-  background-size: cover;
-  background-attachment: fixed;
-
-  background-image: url("../images/IndexBG1.png");
-  min-height: 100%;
-}
-.bgimg-2 {
-  background-position: center;
-  background-size: cover;
-  background-image: url("../images/IndexBG2.png");
-  background-attachment: fixed;
-
-  min-height: 100%;
-}
-.bgimg-3 {
-  background-image: url("../images/IndexBG3.jpg");
-
-  background-position: center;
-  background-size: cover;
-  background-attachment: fixed;
-
-  min-height: 100%;
-}
-
-.w3-bar .w3-button {
-  padding: 16px;
-}
 .topnav {
   overflow: hidden;
   background-color: black;
@@ -62,6 +16,8 @@ body, html {
   padding: 14px 16px;
   text-decoration: none;
   font-size: 17px;
+  font-family: Arial;
+  transition: 0.25s;
 }
 
 .topnav a:hover {
@@ -116,6 +72,75 @@ body, html {
     border: 1px solid #ccc;  
   }
 }
+/* Navbar container */
+.navbar {
+  overflow: hidden;
+  background-color: black;
+  font-family: Arial;
+}
+
+/* Links inside the navbar */
+.navbar a {
+  float: left;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* The dropdown container */
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+/* Dropdown button */
+.dropdown .dropbtn {
+  font-size: 16px;
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit; /* Important for vertical align on mobile phones */
+  margin: 0; /* Important for vertical align on mobile phones */
+}
+
+/* Add a red background color to navbar links on hover */
+.navbar a:hover, .dropdown:hover .dropbtn {
+  background-color: #DAA520;
+}
+
+/* Dropdown content (hidden by default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: black;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  float: none;
+  color: white;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+/* Add a grey background color to dropdown links on hover */
+.dropdown-content a:hover {
+  background-color:#DAA520;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
 
 .transition {
     position: fixed;
@@ -135,48 +160,117 @@ body, html {
     left: 0;
 }
 
-#our-goal {
-  opacity: 0;
-  position: relative;
-  top: 200px;
-  transition: 2s;
-  text-shadow: 3px 3px 10px #000;
+.underbar {
+  width: 100%;
+  height: 100px;
+  background-color: black;
 }
 
-#our-goal.is-active {
-  opacity: 1;
-  top: 0px;
+.clear {
+  margin-left: 10px;
+  cursor: pointer;
+  width: 150px;
+  height: 50px;
+  border-radius: 25px;
+  margin-top: 25px;
+  background-color: white;
+  font-size: 20px;
 }
 
-#how-to-use {
-  opacity: 0;
-  position: relative;
-  top: 200px;
-  transition: 2s;
-  text-shadow: 3px 3px 10px #000;
+.red {
+  cursor: pointer;
+  display: inline-block;
+  background-color: red;
+  width: 40px;
+  height: 40px;
+  border: 2px solid white;
+  vertical-align: middle;
+  margin-left: 10px;
 }
 
-#how-to-use.is-active {
-  opacity: 1;
-  top: 0px;
+.orange {
+  cursor: pointer;
+  display: inline-block;
+  background-color: orange;
+  width: 40px;
+  height: 40px;
+  border: 2px solid white;
+  vertical-align: middle;
+  margin-left: 10px;
 }
 
-
-#about-us {
-  opacity: 0;
-  position: relative;
-  top: 200px;
-  transition: 2s;
-  text-shadow: 3px 3px 10px #000;
+.yellow {
+  cursor: pointer;
+  display: inline-block;
+  background-color: yellow;
+  width: 40px;
+  height: 40px;
+  border: 2px solid white;
+  vertical-align: middle;
+  margin-left: 10px;
 }
 
-#about-us.is-active {
-  opacity: 1;
-  top: 0px;
+.green {
+  cursor: pointer;
+  display: inline-block;
+  background-color: green;
+  width: 40px;
+  height: 40px;
+  border: 2px solid white;
+  vertical-align: middle;
+  margin-left: 10px;
 }
 
-canvas {
-    border: 1px solid black;
-    width: 100%;
-    height: 100%;
+.blue {
+  cursor: pointer;
+  display: inline-block;
+  background-color: blue;
+  width: 40px;
+  height: 40px;
+  border: 2px solid white;
+  vertical-align: middle;
+  margin-left: 10px;
+}
+
+.purple {
+  cursor: pointer;
+  display: inline-block;
+  background-color: purple;
+  width: 40px;
+  height: 40px;
+  border: 2px solid white;
+  vertical-align: middle;
+  margin-left: 10px;
+}
+
+.brown {
+  cursor: pointer;
+  display: inline-block;
+  background-color: brown;
+  width: 40px;
+  height: 40px;
+  border: 2px solid white;
+  vertical-align: middle;
+  margin-left: 10px;
+}
+
+.black {
+  cursor: pointer;
+  display: inline-block;
+  background-color: black;
+  width: 40px;
+  height: 40px;
+  border: 2px solid white;
+  vertical-align: middle;
+  margin-left: 10px;
+}
+
+.custom-color {
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.pen-size {
+  cursor: pointer;
+  margin-left: 10px;
 }

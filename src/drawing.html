@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/drawing.css">
+    <script src="js/transition.js"></script>
+    <title>VizCDT</title>
+</head>
+<body>
+    <!-- Transition -->
+  <div class="transition is-active"></div>
+
+  <div class="navbar">
+    <a href="index.html">Home</a>
+    <div class="dropdown">
+      <button class="dropbtn">Algorithms
+        <i class=""></i>
+      </button>
+      <div class="dropdown-content">
+        <a href="algorithm.html">Algorithm Homepage</a>
+        <a href="postalgorithm.html">Post your Algorithm</a>
+  
+      </div>
+    </div>
+   <div class="dropdown">
+      <button class="dropbtn">Simulations
+        <i class=""></i>
+      </button>
+      <div class="dropdown-content">
+        <a href="solarsystem.html">Solar System</a>
+      
+      </div>
+    </div>
+  </div>
+
+  <canvas class="canvas"></canvas>
+
+  <div class="underbar">
+      <button class="clear">Clear</button>
+
+      <div onclick="change_color('red');" class="red"></div>
+      <div onclick="change_color('orange');" class="orange"></div>
+      <div onclick="change_color('yellow');" class="yellow"></div>
+      <div onclick="change_color('green');" class="green"></div>
+      <div onclick="change_color('blue');" class="blue"></div>
+      <div onclick="change_color('purple');" class="purple"></div>
+      <div onclick="change_color('brown');" class="brown"></div>
+      <div onclick="change_color('black');" class="black"></div>
+
+      <input type="color" class="custom-color" oninput="change_custom_color();">
+      <input type="range" min="1" max="100" class="pen-size" oninput="change_pen_size();">
+  </div>
+
+  <script src="js/drawing.js"></script>
+</body>
+</html>
