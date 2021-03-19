@@ -1,7 +1,7 @@
 const canvas = document.querySelector(".canvas");
 const ctx = canvas.getContext("2d");
 let color = "#000000";
-let width = 10;
+let width = 25;
 let drawing = false;
 
 function resizeCanvas() {
@@ -25,14 +25,13 @@ function clear() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 }
 
-resizeCanvas();
-
-window.addEventListener("resize", function(e) {
+function start(e) {
     drawing = true;
-    resizeCanvas();
-});
+    ctx.moveTo(e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop);
+    ctx.beginPath();
+}
 
-window.addEventListener("mousemove" , function(e) {
+function draw(e) {
     if (drawing == true) {
         ctx.lineTo(e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop);
         ctx.strokeStyle = color;
@@ -41,17 +40,25 @@ window.addEventListener("mousemove" , function(e) {
         ctx.lineJoin = "round";
         ctx.stroke();
     }
-});
+}
 
-window.addEventListener("mousedown" , function(e) {
-    drawing = true;
-    ctx.moveTo(e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop);
-    ctx.beginPath();
-});
-
-window.addEventListener("mouseup" , function(e) {
+function stop(e) {
     drawing = false;
     ctx.closePath();
+}
+
+resizeCanvas();
+
+window.addEventListener("resize", function(e) {
+    drawing = true;
+    resizeCanvas();
 });
+
+window.addEventListener("mousedown" , start);
+window.addEventListener("touchstart", start);
+window.addEventListener("mousemove" , draw);
+window.addEventListener("touchmove" , draw);
+window.addEventListener("mouseup" , stop);
+window.addEventListener("touchend" , stop);
 
 document.querySelector(".clear").onclick = clear;
