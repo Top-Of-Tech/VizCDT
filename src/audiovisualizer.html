@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Audio Visualizer</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <style>
+
+        body {
+            overflow: hidden;
+            background: white;
+        }
+
+        .background {
+            position: absolute;
+
+            top: -50px;
+            right: -50px;
+            bottom: -50px;
+            left: -50px;
+
+            background-image: url("background.jpg");
+            background-position: center center;
+            background-size: cover;
+
+            filter: blur(15px);
+            z-index: -5;
+
+        }
+
+        .track-title {
+
+            position: absolute;
+
+            top: 120px;
+            right: 0;
+            left: 0;
+
+            color: black;
+            font-family: Calibri;
+            font-size: 100px;
+            text-align: center;
+
+        }
+
+        .vz-container{
+            position: relative;
+            margin-top: 0px;
+            height: 500px;
+        }
+
+        .visualizer-container {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            text-align: center;
+        }
+
+        .visualizer-container__bar {
+            display: inline-block;
+            background-color: black !important;
+            margin: 0 2px;
+            width: 25px;
+        }
+
+        .fileButtonDivider{
+            margin: 3%;
+            border: none;
+        }
+
+        .fileButtonContainer{
+            text-align: center;
+        }
+
+        .fileButton{
+            cursor: pointer;
+            border: black solid 2px;
+            border-radius: 20px;
+            padding: 10px;
+        }
+
+        .fileButton:hover{
+            color: white;
+            background: rgb(0, 0, 0);
+        }
+    </style>
+
+</head>
+<body>
+<div>
+    <audio id="audio" controls style="display: none;"><source src="" id="src"></audio>
+        <div class="track-title">Audio Visualizer</div>
+        <div class="vz-container"><div class="visualizer-container"></div></div>
+        <hr class="fileButtonDivider">'
+        <div class="fileButtonContainer">
+            <label class="fileButton" for="upload">Choose mp3 file</label>
+            <input type="file" name="" id="upload" accept=".mp3" style="display: none;">
+        </div>
+</div>
+
+<script>
+
+    function play() {
+        const NBR_OF_BARS = 50;
+        const audio = document.querySelector("audio");
+        const ctx = new AudioContext();
+        const audioSource = ctx.createMediaElementSource(audio);
+        const analayzer = ctx.createAnalyser();
+
+        audioSource.connect(analayzer);
+        audioSource.connect(ctx.destination);
+
+        const frequencyData = new Uint8Array(analayzer.frequencyBinCount);
+        analayzer.getByteFrequencyData(frequencyData);
+        console.log("frequencyData", frequencyData);
+
+        const visualizerContainer = document.querySelector(".visualizer-container");
+
+        for( let i = 0; i < NBR_OF_BARS; i++ ) {
+
+            const bar = document.createElement("DIV");
+            bar.setAttribute("id", "bar" + i);
+            bar.setAttribute("class", "visualizer-container__bar");
+            visualizerContainer.appendChild(bar);
+
+        }
+
+        function renderFrame() {
+            analayzer.getByteFrequencyData(frequencyData);
+
+            for( let i = 0; i < NBR_OF_BARS; i++ ) {
+                const index = (i + 10) * 2;
+                const fd = frequencyData[index];
+
+                const bar = document.querySelector("#bar" + i);
+                if( !bar ) {
+                    continue;
+                }
+
+                const barHeight = Math.max(4, fd || 0);
+                bar.style.height = barHeight + "px";
+
+            }
+
+            window.requestAnimationFrame(renderFrame);
+
+        }
+
+        renderFrame();
+        
+        audio.volume = 1.0;
+        audio.play();
+    };
+
+    function handleFiles(event) {
+        var files = event.target.files;
+        $("#src").attr("src", URL.createObjectURL(files[0]));
+        document.getElementById("audio").load();
+    }
+
+    document.getElementById("upload").addEventListener("change", handleFiles, false);
+    document.getElementById("upload").addEventListener("change", function() {
+        play()
+    });
+</script>
+
+</body>
+</html>
