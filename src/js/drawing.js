@@ -31,9 +31,26 @@ function start(e) {
     ctx.beginPath();
 }
 
+function start_touch(e) {
+    drawing = true;
+    ctx.moveTo(e.touches[0].clientX - canvas.offsetLeft, e.touches[0].clientY - canvas.offsetTop);
+    ctx.beginPath();
+}
+
 function draw(e) {
     if (drawing == true) {
         ctx.lineTo(e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop);
+        ctx.strokeStyle = color;
+        ctx.lineWidth = width;
+        ctx.lineCap = "round";
+        ctx.lineJoin = "round";
+        ctx.stroke();
+    }
+}
+
+function draw_touch(e) {
+    if (drawing == true) {
+        ctx.lineTo(e.touches[0].clientX - canvas.offsetLeft, e.touches[0].clientY - canvas.offsetTop);
         ctx.strokeStyle = color;
         ctx.lineWidth = width;
         ctx.lineCap = "round";
@@ -55,9 +72,9 @@ window.addEventListener("resize", function(e) {
 });
 
 window.addEventListener("mousedown" , start);
-window.addEventListener("touchstart", start);
+window.addEventListener("touchstart", start_touch);
 window.addEventListener("mousemove" , draw);
-window.addEventListener("touchmove" , draw);
+window.addEventListener("touchmove" , draw_touch);
 window.addEventListener("mouseup" , stop);
 window.addEventListener("touchend" , stop);
 
