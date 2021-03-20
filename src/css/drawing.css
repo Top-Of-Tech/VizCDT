@@ -166,7 +166,7 @@ body {
   background-color: black;
 }
 
-.clear {
+.clear, .erase, .save {
   margin-left: 10px;
   cursor: pointer;
   width: 150px;
@@ -300,14 +300,15 @@ body {
   cursor: pointer;
 }
 
-@media screen and (max-width: 833px) {
+@media screen and (max-width: 1161px) {
   .underbar div {
+    margin-left: 2px;
     width: 20px;
     height: 20px;
     border: 1px solid white;
   }
 
-  .clear {
+  .clear, .erase, .save {
     margin-left: 5px;
     width: 75px;
     height: 25px;
@@ -326,16 +327,17 @@ body {
   }
 }
 
-@media screen and (max-width: 509px) {
+@media screen and (max-width: 679px) {
   .underbar div {
+    margin-left: 2px;
     width: 15px;
     height: 15px;
     border: 1px solid white;
     margin-left: 5px;
   }
 
-  .clear {
-    margin-left: 5px;
+  .clear, .erase, .save {
+    margin-left: 2px;
     width: 40px;
     height: 24px;
     border-radius: 25px;
@@ -358,13 +360,13 @@ body {
   }
 
   .pen-size {
-    margin-left: 5px;
+    margin-left: 2px;
     height: 10px;
     border-radius: 5px;  
   }
 
   .custom-color {
-    margin-left: 5px;
+    margin-left: 2px;
     width: 15px;
   }
   

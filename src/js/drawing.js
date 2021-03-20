@@ -65,9 +65,23 @@ function draw_touch(e) {
     }
 }
 
+function erase() {
+    color = "white";
+}
+
 function stop(e) {
     drawing = false;
     ctx.closePath();
+}
+
+function save() {
+    let image = canvas.toDataURL();
+    let tmpLink = document.createElement('a');
+    tmpLink.download = 'image.png';
+    tmpLink.href = image;
+    document.body.appendChild(tmpLink);
+    tmpLink.click();
+    document.body.removeChild(tmpLink);
 }
 
 resizeCanvas();
@@ -85,3 +99,5 @@ window.addEventListener("mouseup" , stop);
 window.addEventListener("touchend" , stop);
 
 document.querySelector(".clear").onclick = clear;
+document.querySelector(".erase").onclick = erase;
+document.querySelector(".save").onclick = save;
