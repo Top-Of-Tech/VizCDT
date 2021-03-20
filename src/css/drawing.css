@@ -325,3 +325,47 @@ body {
     width: 75px;
   }
 }
+
+@media screen and (max-width: 509px) {
+  .underbar div {
+    width: 15px;
+    height: 15px;
+    border: 1px solid white;
+    margin-left: 5px;
+  }
+
+  .clear {
+    margin-left: 5px;
+    width: 40px;
+    height: 24px;
+    border-radius: 25px;
+    margin-top: 40px;
+    font-size: 10px;
+  }
+
+  .pen-size {
+    width: 34px;
+  }
+
+  .pen-size::-moz-range-thumb {
+    width: 12px;
+    height: 12px;
+  }
+
+  .pen-size::-webkit-slider-thumb {
+    width: 12px;
+    height: 12px;
+  }
+
+  .pen-size {
+    margin-left: 5px;
+    height: 10px;
+    border-radius: 5px;  
+  }
+
+  .custom-color {
+    margin-left: 5px;
+    width: 15px;
+  }
+  
+}
