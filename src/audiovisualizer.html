@@ -1,0 +1,401 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Audio Visualizer</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="css/index.css">
+   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="css/index.css">
+  <script src="js/index.js"></script>
+  <script src="js/transition.js"></script>
+      <link rel="shortcut icon" href="images/Favicon.png">
+    <style>
+
+        body {
+            overflow: hidden;
+            background: white;
+        }
+
+        .background {
+            position: absolute;
+
+            top: -50px;
+            right: -50px;
+            bottom: -50px;
+            left: -50px;
+
+            background-image: url("background.png");
+            background-position: center center;
+            background-size: cover;
+
+            z-index: -5;
+
+        }
+
+        .track-title {
+            position: absolute;
+            top: 5%;
+            right: 0;
+            left: 0;
+            color: black;
+            font-family: cursive;
+            font-size: 120px;
+            text-align: center;
+            font-weight: bolder;
+            -webkit-text-stroke-width: 5px;
+            -webkit-text-stroke-color: white;
+        }
+
+        .vz-container{
+            position: absolute;
+            margin-left: auto;
+            margin-right: auto;
+            left: 0;
+            right: 0;
+            text-align: center;
+            top: 50%;
+            transform: translate(0, -50%);
+            height: 300px;
+        }
+
+        .visualizer-container {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            text-align: center;
+        }
+
+        .visualizer-container__bar {
+            display: inline-block;
+            background-color: black !important;
+            border: white solid;
+            margin: 0 2px;
+            width: 25px;
+        }
+
+        .fileButtonContainer{
+            position: absolute;
+            margin-left: auto;
+            margin-right: auto;
+            left: 0;
+            right: 0;
+            text-align: center;
+            bottom: 10%;
+        }
+
+        .fileButton{
+            cursor: pointer;
+            border: white solid 2px;
+            background: black;
+            border-radius: 25px;
+            padding: 15px;
+            color: white;
+            font-size: 20px;
+        }
+
+        .fileButton:hover{
+            color: rgb(43, 43, 43);
+            background: rgb(180, 180, 180);
+            border-color: black;
+        }
+
+        @media screen and (max-width:1850px){
+            #bar49{
+                display: none;
+            }
+            #bar48{
+                display: none;
+            }
+            #bar47{
+                display: none;
+            }
+        }
+        @media screen and (max-width:1750px){
+            #bar46{
+                display: none;
+            }
+            #bar45{
+                display: none;
+            }
+            #bar44{
+                display: none;
+            }
+        }
+        @media screen and (max-width:1650px){
+            #bar43{
+                display: none;
+            }
+            #bar42{
+                display: none;
+            }
+            #bar41{
+                display: none;
+            }
+        }
+        @media screen and (max-width:1550px){
+            #bar40{
+                display: none;
+            }
+            #bar39{
+                display: none;
+            }
+            #bar38{
+                display: none;
+            }
+        }
+        @media screen and (max-width:1450px){
+            #bar37{
+                display: none;
+            }
+            #bar36{
+                display: none;
+            }
+            #bar35{
+                display: none;
+            }
+        }
+        @media screen and (max-width:1350px){
+            #bar34{
+                display: none;
+            }
+            #bar33{
+                display: none;
+            }
+            #bar32{
+                display: none;
+            }
+        }
+        @media screen and (max-width:1250px){
+            #bar31{
+                display: none;
+            }
+            #bar30{
+                display: none;
+            }
+            #bar29{
+                display: none;
+            }
+        }
+        @media screen and (max-width:1150px){
+            #bar28{
+                display: none;
+            }
+            #bar27{
+                display: none;
+            }
+            #bar26{
+                display: none;
+            }
+        }
+        @media screen and (max-width:1050px){
+            .track-title{
+                font-size: 90px;
+            }
+            #bar25{
+                display: none;
+            }
+            #bar24{
+                display: none;
+            }
+            #bar23{
+                display: none;
+            }
+        }
+        @media screen and (max-width:950px){
+            #bar22{
+                display: none;
+            }
+            #bar21{
+                display: none;
+            }
+            #bar20{
+                display: none;
+            }
+        }
+        @media screen and (max-width:850px){
+            #bar19{
+                display: none;
+            }
+            #bar18{
+                display: none;
+            }
+            #bar17{
+                display: none;
+            }
+        }
+        @media screen and (max-width:850px){
+            #bar16{
+                display: none;
+            }
+        }
+        @media screen and (max-width:750px){
+            .track-title{
+                font-size: 60px;
+                -webkit-text-stroke-width: 2px;
+            }
+            #bar15{
+                display: none;
+            }
+            #bar14{
+                display: none;
+            }
+            #bar13{
+                display: none;
+            }
+            #bar12{
+                display: none;
+            }
+            #bar11{
+                display: none;
+            }
+        }
+
+    </style>
+
+</head>
+</head>
+<body>
+  <!-- Transition -->
+  <div class="transition is-active"></div>
+
+  <div class="navbar">
+    <a href="index.html">Home</a>
+    <div class="dropdown">
+      <button class="dropbtn">Coding 
+        <i class=""></i>
+      </button>
+      <div class="dropdown-content">
+        <a href="#">Coding Editor</a>
+  
+      </div>
+    </div>
+   <div class="dropdown">
+      <button class="dropbtn">Stimulations
+        <i class=""></i>
+      </button>
+      <div class="dropdown-content">
+        <a href="solarsystem.html">Solar System</a>
+      </div>
+    </div>
+  <div class="dropdown">
+      <button class="dropbtn">Tools
+        <i class=""></i>
+      </button>
+      <div class="dropdown-content">
+        <a href="drawing.html">Drawing Editor</a>
+        <a href="audiovisualizer.html">Audio Visualizer</a>
+
+      </div>
+    </div>
+
+
+
+      
+      </div>
+    </div>
+  </div>
+</body>
+
+<body>
+<div>
+    <audio id="audio" controls style="display: none;"><source src="" id="src"></audio>
+        <div class="track-title">Audio Visualizer</div>
+        <div class="vz-container"><div class="visualizer-container"></div></div>
+        <div class="background"></div>
+        <div class="fileButtonContainer">
+            <label class="fileButton" for="upload">Choose mp3 file</label>
+            <input type="file" name="" id="upload" accept=".mp3" style="display: none;">
+        </div>
+</div>
+
+<script>
+    document.onkeydown = fkey;
+    document.onkeypress = fkey;
+    document.onkeyup = fkey;
+    function fkey(e) {
+        if (e.keyCode == 116) {
+            e.preventDefault();
+            sessionStorage.removeItem("reload");
+            location.reload();
+        }
+    }
+
+    function play() {
+        sessionStorage.setItem("reload", "true");
+        const NBR_OF_BARS = 50;
+        const audio = document.querySelector("audio");
+        const ctx = new AudioContext();
+        const audioSource = ctx.createMediaElementSource(audio);
+        const analayzer = ctx.createAnalyser();
+
+        audioSource.connect(analayzer);
+        audioSource.connect(ctx.destination);
+
+        const frequencyData = new Uint8Array(analayzer.frequencyBinCount);
+        analayzer.getByteFrequencyData(frequencyData);
+        console.log("frequencyData", frequencyData);
+
+        const visualizerContainer = document.querySelector(".visualizer-container");
+
+        for( let i = 0; i < NBR_OF_BARS; i++ ) {
+            const bar = document.createElement("DIV");
+            bar.setAttribute("id", "bar" + i);
+            bar.setAttribute("class", "visualizer-container__bar");
+            visualizerContainer.appendChild(bar);
+        }
+
+        function renderFrame() {
+            analayzer.getByteFrequencyData(frequencyData);
+
+            for( let i = 0; i < NBR_OF_BARS; i++ ) {
+                const index = (i + 10) * 2;
+                const fd = frequencyData[index];
+
+                const bar = document.querySelector("#bar" + i);
+                if( !bar ) {
+                    continue;
+                }
+
+                const barHeight = Math.max(4, fd || 0);
+                bar.style.height = barHeight + "px";
+
+            }
+
+            window.requestAnimationFrame(renderFrame);
+
+        }
+
+        renderFrame();
+            
+        audio.volume = 1.0;
+        audio.play();
+    };
+
+    function handleFiles(event) {
+        var files = event.target.files;
+        document.getElementById("src").setAttribute("src", URL.createObjectURL(files[0]));
+        document.getElementById("audio").load();
+    }
+
+    document.getElementById("upload").addEventListener("change", handleFiles, false);
+    document.getElementById("upload").addEventListener("click", function() {
+        if(sessionStorage.getItem("reload") != null){
+            sessionStorage.removeItem("reload");
+            location.reload();
+        }
+        document.getElementById("upload").addEventListener("change", function() {
+            play();
+        });
+    });
+</script>
+</body>
+</html>
