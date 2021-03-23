@@ -1,13 +1,17 @@
 const button = document.querySelector(".run");
-const code_writer = document.querySelector(".code-editor");
-const output = document.querySelector(".output")
+const editor = document.querySelector(".editor");
+const output = document.querySelector(".output");
+
+function color_code() {
+	
+}
 
 async function run() {
     const response = fetch('https://emkc.org/api/v1/piston/execute', {
 	method: 'POST',
 	body: JSON.stringify({
         language: 'python3',
-		source: code_writer.value,
+		source: editor.value,
 		stdin: "",
 		args: []
 	}),
@@ -20,6 +24,7 @@ async function run() {
 	let json_data = await data.json();
 	console.log(json_data);
 	output.textContent = json_data["output"];
+	
 }
 
 button.onclick = run;

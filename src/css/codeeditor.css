@@ -192,6 +192,7 @@ body {
 .output {
     font-family: 'Courier New', Courier, monospace;
     color: white;
+    white-space: pre-line;
 }
 
 .run {
@@ -200,4 +201,25 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     cursor: pointer;
+}
+
+.code-editor {
+  font-family: 'Courier New', Courier, monospace;
+  
+}
+
+.editor {
+  position: absolute;
+  top: 11%;
+  left: 4%;
+  width: 40%;
+  height: 80%;
+  padding: 10px;
+  background-color: #444;
+  color: white;
+  font-size: 14px;
+  font-family: 'Courier New', Courier, monospace;
+}
+.statement {
+  color: orange;
 }
