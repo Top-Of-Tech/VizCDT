@@ -1,25 +1,25 @@
 const button = document.querySelector(".run");
+const code_writer = document.querySelector(".code-editor");
+const output = document.querySelector(".output")
 
-function run() {
-    fetch('https://emkc.org/api/v1/piston/execute', {
+async function run() {
+    const response = fetch('https://emkc.org/api/v1/piston/execute', {
 	method: 'POST',
 	body: JSON.stringify({
         language: 'python3',
-		source: 'print("hello")'
+		source: code_writer.value,
+		stdin: "",
+		args: []
 	}),
 	headers: {
-		'Content-type': 'application/json;'
+		'Content-type': 'application/json'
 	}
-    }).then(function (response) {
-	if (response.ok) {
-		return response.json();
-	}
-	    return Promise.reject(response);
-    }).then(function (data) {
-	    console.log(data);
-    }).catch(function (response) {
-	    console.log(response.json())
-    });
+	});
+
+	let data = await response;
+	let json_data = await data.json();
+	console.log(json_data);
+	output.textContent = json_data["output"];
 }
 
 button.onclick = run;
