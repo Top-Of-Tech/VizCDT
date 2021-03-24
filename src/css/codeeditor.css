@@ -223,3 +223,7 @@ body {
 .statement {
   color: orange;
 }
+
+pre {
+  tab-size: 4;
+}
