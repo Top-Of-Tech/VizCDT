@@ -18,13 +18,9 @@
   <script src="js/transition.js"></script>
       <link rel="shortcut icon" href="images/Favicon.png">
     <style>
-        *{
-            overflow: hidden;
-            margin: 0;
-            padding: 0;
-        }
 
         body {
+            overflow: hidden;
             background: white;
         }
 
@@ -33,7 +29,7 @@
 
             top: -50px;
             right: -50px;
-            bottom: -50px;
+            bottom: 0px;
             left: -50px;
 
             background-image: url("background.png");
@@ -269,6 +265,7 @@
 </head>
 <body>
   <!-- Transition -->
+  <div class="transition is-active"></div>
 
   <div class="navbar">
     <a href="index.html">Home</a>
