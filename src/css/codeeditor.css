@@ -208,7 +208,8 @@ body {
   
 }
 
-.editor {
+.backdrop, .editor {
+  tab-size: 4;
   position: absolute;
   top: 11%;
   left: 4%;
@@ -216,7 +217,7 @@ body {
   height: 80%;
   padding: 10px;
   background-color: #444;
-  color: white;
+  color: rgb(238, 205, 96);
   font-size: 14px;
   font-family: 'Courier New', Courier, monospace;
 }
@@ -226,4 +227,185 @@ body {
 
 pre {
   tab-size: 4;
+}
+
+.editor {
+  margin: 0;
+  border-radius: 0;
+  background-color: transparent;
+  color: transparent;
+  caret-color: #555555;
+  z-index: 2;
+  resize: none;
+  border: none;
+}
+
+.backdrop {
+  position: absolute;
+  z-index: 1;
+  border: 2px solid transparent;
+  overflow: auto;
+  pointer-events: none;
+}
+
+.custom-area {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.run {
+  width: 4%;
+  height: 100px;
+  border-radius: 10px;
+  border: none;
+  transition: 0.5s;
+}
+
+.run:hover {
+  background-color: rgb(155, 155, 155);
+}
+
+.input-box {
+  width: 300px;
+  height: 300px;
+  background-color: white;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  border-radius: 3px;
+  border: 3px solid black;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.25s;
+}
+
+.input-text {
+  text-align: center;
+}
+
+.input {
+  position: relative;
+  margin-left: 24%;
+  height: 100px;
+  resize: none;
+}
+
+.submit {
+  display: block;
+  margin-left: 38%;
+  margin-top: 10%;
+  border-radius: 10px;
+  width: 75px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.input-box.show {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.input-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  z-index: 1;
+  opacity: 0;
+  transition: 0.25s;
+  pointer-events: none;
+}
+
+.input-bg.show {
+  opacity: 0.5;
+}
+
+.runimg {
+  width: 80%;
+}
+
+@media screen and (max-width: 1600px) {
+  .run {
+    height: 90px;
+  }
+}
+
+@media screen and (max-width: 1500px) {
+  .run {
+    height: 80px;
+  }
+}
+
+@media screen and (max-width: 1400px) {
+  .run {
+    height: 70px;
+  }
+}
+
+@media screen and (max-width: 1300px) {
+  .run {
+    height: 60px;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .run {
+    height: 50px;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .run {
+    height: 40px;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .run {
+    height: 30px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .backdrop, .editor {
+    top: 8%;
+    left: 11%;
+    width: 80%;
+    height: 35%;
+  }
+
+  .editor {
+    opacity: 0;
+  }
+
+  .output-box {
+    top: 55%;
+    left: 11%;
+    width: 80%;
+    height: 38%;
+  }
+}
+
+@media screen and (max-height: 625px) {
+  .backdrop, .editor {
+    position: absolute;
+    top: 11%;
+    left: 11%;
+    width: 80%;
+    height: 35%;
+  }
+
+  .output-box {
+    top: 58%;
+    left: 11%;
+    width: 80%;
+    height: 38%;
+  }
+
+  .run {
+    position: absolute;
+    top: 54%;
+  }
 }

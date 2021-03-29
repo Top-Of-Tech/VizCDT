@@ -42,14 +42,32 @@
       </div>
     </div>
 
-  <pre><textarea name="editor" class="editor" cols="30" rows="10"></textarea></pre>
+    <div class="backdrop">
+      <div class="custom-area">
+          <!-- Cloned text will go here -->
+      </div>
+    </div>
+    <textarea name="editor" class="editor" cols="30" rows="10"></textarea>
+  
+    <div class="output-box">
+      <p class="output">Output</p>
+    </div>
+  
+    <button class="run">
+      <img class="runimg" src="images/run.png" alt="Run">
+    </button>
+    
+    <div class="input-bg"></div>
 
-  <div class="output-box">
-    <p class="output">Output</p>
-  </div>
-
-  <button class="run">Run</button>
-
-  <script src="js/codeeditor.js"></script>
+    <div class="input-box">
+      <h3 class="input-text">Code Input</h3>
+      <p class="input-text">(Seperate new inputs by a newline)</p>
+      <textarea class="input"></textarea>
+      <button class="submit">Submit</button>
+    </div>
+  
+    
+  
+    <script src="js/codeeditor.js"></script>
 </body>
 </html>
