@@ -14,6 +14,6 @@ You can find our website by clicking [here](https://vizcdt.vercel.app)
 - We have a weather visualizer to see your weather!
 
 ## Creators
-dillythecoder#3933
-CodeZhifty#5155
-Top Of Tech#4867
+dillythecoder#3933  
+CodeZhifty#5155  
+Top Of Tech#4867  
