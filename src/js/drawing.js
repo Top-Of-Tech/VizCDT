@@ -1,7 +1,7 @@
 const canvas = document.querySelector(".canvas");
 const ctx = canvas.getContext("2d");
 let color = "#000000";
-let width = 25;
+let width = 50;
 let drawing = false;
 
 function resizeCanvas() {
@@ -22,7 +22,8 @@ function change_custom_color() {
 }
 
 function clear() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = "white";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
 }
 
 function start(e) {
@@ -87,9 +88,10 @@ function save() {
 resizeCanvas();
 
 window.addEventListener("resize", function(e) {
-    drawing = true;
     resizeCanvas();
 });
+
+clear()
 
 window.addEventListener("mousedown" , start);
 window.addEventListener("touchstart", start_touch);
