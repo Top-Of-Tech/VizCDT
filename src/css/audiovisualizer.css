@@ -8,14 +8,14 @@ body, html {
   padding: 16px;
 }
 /* Navbar container */
-.navbar1 {
+.navbar {
   overflow: hidden;
   background-color: black;
   font-family: Arial;
 }
 
 /* Links inside the navbar */
-.navbar1 a {
+.navbar a {
   float: left;
   font-size: 16px;
   color: white;
@@ -24,14 +24,14 @@ body, html {
   text-decoration: none;
 }
 /* Navbar container */
-.navbar1 {
+.navbar {
   overflow: hidden;
   background-color: black;
   font-family: Arial;
 }
 
 /* Links inside the navbar */
-.navbar1 a {
+.navbar a {
   float: left;
   font-size: 16px;
   color: white;
