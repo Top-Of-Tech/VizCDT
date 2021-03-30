@@ -7,10 +7,10 @@ You can find our website by clicking [here](https://vizcdt.vercel.app)
 
 ## Tools
 - We have drawing tool so you can visualize anything you need to!
-- We also have a coding editor to visualize your code! (computer only)
+- We also have a coding editor to visualize your code! __(computer only)__
 
 ## Simulations
-- We have a solar system simulation so you can explore our solar system! (computer only)
+- We have a solar system simulation so you can explore our solar system! __(computer only)__
 - We have a weather visualizer to see your weather!
 - We have an audio visualizer to see your audio waves!
 
