@@ -17,6 +17,8 @@
     body {
         overflow: hidden;
         background: white;
+        margin: 0;
+        padding: 0;
     }
 
     .background {
@@ -24,7 +26,7 @@
 
         top: -50px;
         right: -50px;
-        bottom: 0px;
+        bottom: -50px;
         left: -50px;
 
         background-image: url("background.png");
@@ -33,21 +35,6 @@
 
         z-index: -5;
 
-    }
-
-    .track-title {
-        position: absolute;
-        top: 5%;
-        right: 0;
-        left: 0;
-        color: black;
-        font-family: cursive;
-        font-size: 120px;
-        text-align: center;
-        font-weight: bolder;
-        -webkit-text-stroke-width: 5px;
-        -webkit-text-stroke-color: white;
-        z-index: -4;
     }
 
     .vz-container{
@@ -70,12 +57,14 @@
         text-align: center;
     }
 
-    .visualizer-container__bar {
+    .visualizer-container_bar {
         display: inline-block;
-        background-color: black !important;
+        background-color: white;
         border: white solid;
         margin: 0 2px;
-        width: 25px;
+        height: 5px;
+        position: absolute;
+        transform: rotate(90deg);
     }
 
     .fileButtonContainer{
@@ -90,18 +79,19 @@
 
     .fileButton{
         cursor: pointer;
-        border: white solid 2px;
-        background: black;
+        border: white solid 5px;
+        background: #6affa5;
         border-radius: 25px;
         padding: 15px;
+        font-family: cursive;
         color: white;
         font-size: 20px;
     }
 
     .fileButton:hover{
-        color: rgb(43, 43, 43);
-        background: rgb(180, 180, 180);
-        border-color: black;
+        color: rgb(179, 179, 179);
+        background: #57d68a;
+        border-color: white;
     }
 
     @media screen and (max-width:1850px){
@@ -255,6 +245,10 @@
         }
     }
 
+    #home:hover{
+        background-color: goldenrod;
+    }
+
 </style>
 </head>
 <body>
@@ -262,7 +256,7 @@
 <div class="transition is-active"></div>
 
 <div class="navbar">
-  <a href="index.html">Home</a>
+  <a href="index.html" id="home">Home</a>
  <div class="dropdown">
     <button class="dropbtn">Simulations
       <i class=""></i>
@@ -282,15 +276,17 @@
       <a href="codeeditor.html">Coding Editor</a>
     </div>
   </div>
-  <div>
+  <canvas id="renderer"></canvas>
+<div>
     <audio id="audio" controls style="display: none;"><source src="" id="src"></audio>
-        <div class="track-title">Audio Visualizer</div>
-        <div class="vz-container"><div class="visualizer-container"></div></div>
+
+        <!-- <div class="vz-container"><div class="visualizer-container"></div></div> -->
         <div class="background"></div>
         <div class="fileButtonContainer">
-            <label class="fileButton" for="upload">Choose mp3 file</label>
+            <label class="fileButton" id="fileButton" for="upload">Choose mp3 file</label>
             <input type="file" name="" id="upload" accept=".mp3" style="display: none;">
         </div>
+</div>
 </div>
 <script>
     document.onkeydown = fkey;
@@ -303,56 +299,92 @@
             location.reload();
         }
     }
+    
+    bars = 100;
+    bar_width = 15;
+    const audio = document.querySelector("audio");
+    const ctx = new AudioContext();
+    const audioSource = ctx.createMediaElementSource(audio);
+    const analyzer = ctx.createAnalyser();
+
+    audioSource.connect(analyzer);
+    audioSource.connect(ctx.destination);
+
+    const frequencyData = new Uint8Array(analyzer.frequencyBinCount);
+    analyzer.getByteFrequencyData(frequencyData);
+    console.log("frequencyData", frequencyData);
+
+    const visualizerContainer = document.querySelector(".visualizer-container");
+    const canvas = document.getElementById("renderer");
+
+    function renderFrame() {
+        // set to the size of device
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        canvasCtx = canvas.getContext("2d");
+            
+        // find the center of the window
+        center_x = canvas.width / 2;
+        center_y = canvas.height / 2;
+        radius = 150;
+
+        analyzer.getByteFrequencyData(frequencyData);
+        for(var i = 0; i < bars; i++){    
+            // style the background
+            var gradient = canvasCtx.createLinearGradient(0,0,0,canvas.height);
+            gradient.addColorStop(0,"rgba(" + frequencyData[i] + ", 230, 100, 1)");
+            gradient.addColorStop(1,"rgba(230, 230, 230, 1)");
+            canvasCtx.fillStyle = gradient;
+            canvasCtx.fillRect(0,0,canvas.width,canvas.height); 
+        }
+            
+        for(var i = 0; i < bars; i++){
+                
+            //divide a circle into equal parts
+            rads = Math.PI * 2 / bars;
+                
+            const bar_height = frequencyData[i]*2 || 10;
+
+            // set coordinates
+            radius = (frequencyData[10] / 2) + 100;
+
+            x = center_x + Math.cos(rads * i) * (radius);
+            y = center_y + Math.sin(rads * i) * (radius);
+            x_end = center_x + Math.cos(rads * i)*(radius + bar_height);
+            y_end = center_y + Math.sin(rads * i)*(radius + bar_height);
+                
+            //draw a bar
+            drawBar(x, y, x_end, y_end, bar_width,frequencyData[i]);
+            
+        }
+
+        window.requestAnimationFrame(renderFrame);
+
+    }
+
+    function drawBar(x1, y1, x2, y2, width,frequency){
+        //Style bars
+        for(var i = 0; i < bars; i++){
+            var lineColor = "#ffffff";
+            canvasCtx.strokeStyle = lineColor;
+        }
+
+        //Draw bars
+        canvasCtx.lineWidth = width;
+        canvasCtx.beginPath();
+        canvasCtx.moveTo(x1,y1);
+        canvasCtx.lineTo(x2,y2);
+        canvasCtx.stroke();
+    }
+
+    renderFrame();
 
     function play() {
         sessionStorage.setItem("reload", "true");
-        const NBR_OF_BARS = 50;
-        const audio = document.querySelector("audio");
-        const ctx = new AudioContext();
-        const audioSource = ctx.createMediaElementSource(audio);
-        const analayzer = ctx.createAnalyser();
-
-        audioSource.connect(analayzer);
-        audioSource.connect(ctx.destination);
-
-        const frequencyData = new Uint8Array(analayzer.frequencyBinCount);
-        analayzer.getByteFrequencyData(frequencyData);
-        console.log("frequencyData", frequencyData);
-
-        const visualizerContainer = document.querySelector(".visualizer-container");
-
-        for( let i = 0; i < NBR_OF_BARS; i++ ) {
-            const bar = document.createElement("DIV");
-            bar.setAttribute("id", "bar" + i);
-            bar.setAttribute("class", "visualizer-container__bar");
-            visualizerContainer.appendChild(bar);
-        }
-
-        function renderFrame() {
-            analayzer.getByteFrequencyData(frequencyData);
-
-            for( let i = 0; i < NBR_OF_BARS; i++ ) {
-                const index = (i + 10) * 2;
-                const fd = frequencyData[index];
-
-                const bar = document.querySelector("#bar" + i);
-                if( !bar ) {
-                    continue;
-                }
-
-                const barHeight = Math.max(4, fd || 0);
-                bar.style.height = barHeight + "px";
-
-            }
-
-            window.requestAnimationFrame(renderFrame);
-
-        }
-
-        renderFrame();
-            
         audio.volume = 1.0;
         audio.play();
+        document.getElementById("upload").style.display = "none";
+        document.getElementById("fileButton").style.display = "none";
     };
 
     function handleFiles(event) {
@@ -372,3 +404,20 @@
         });
     });
 </script>
+
+
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Audio Visualizer</title>
+    
+
+</head>
+<body>
+
+
+
+
+
+</body>
+</html>
