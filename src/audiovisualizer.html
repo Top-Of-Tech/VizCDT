@@ -14,6 +14,8 @@
   <link rel="shortcut icon" href="images/Favicon.png">
   <style>
 
+      *{}
+
     body {
         overflow: hidden;
         background: white;
@@ -279,9 +281,6 @@
   <canvas id="renderer"></canvas>
 <div>
     <audio id="audio" controls style="display: none;"><source src="" id="src"></audio>
-
-        <!-- <div class="vz-container"><div class="visualizer-container"></div></div> -->
-        <div class="background"></div>
         <div class="fileButtonContainer">
             <label class="fileButton" id="fileButton" for="upload">Choose mp3 file</label>
             <input type="file" name="" id="upload" accept=".mp3" style="display: none;">
@@ -383,8 +382,6 @@
         sessionStorage.setItem("reload", "true");
         audio.volume = 1.0;
         audio.play();
-        document.getElementById("upload").style.display = "none";
-        document.getElementById("fileButton").style.display = "none";
     };
 
     function handleFiles(event) {
