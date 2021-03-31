@@ -5,25 +5,140 @@
   <link rel="shortcut icon" href="logo.png">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="css/solarsystem.css">
+  <link href="https://fonts.googleapis.com/css2?family=Chango&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/weathervisualizer.css">
   <script src="js/transition.js"></script>
   <!-- Favicon -->
   <link rel="shortcut icon" href="images/Favicon.png">
   <style>
-      *{
-          overflow: hidden;
-      }
-  </style>
+    * {
+        box-sizing: border-box;
+        overflow: hidden;
+    }
+    
+    body {
+        background-image: url("./background.png");
+        height: 100%; 
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover !important;
+        margin: 0;
+        padding: 0;
+        font-family: Arial;
+        font-size: 17px;
+    }
+    
+    #myVideo {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        width: 100vw; 
+        min-height: 100vh;
+        display: none;
+    }
+    
+    #pagediv{
+        display: none;
+        position: absolute;
+        margin-left: auto;
+        margin-right: auto;
+        left: 0;
+        right: 0;
+        top: 5%;
+        text-align: center;
+        font-family: 'Chango', cursive;
+        font-size: 50px;
+        font-weight: bold;
+        -webkit-text-stroke-width: 5px;
+        -webkit-text-stroke-color: white;
+        color: #414041;
+    }
+    
+    #towndiv{
+        text-align: center;
+    }
+    
+    #header{
+        text-align: center;
+        font-family: 'Chango', cursive;
+        -webkit-text-stroke-width: 5px;
+        -webkit-text-stroke-color: white;
+        font-size: 100px;
+        color: #414041;
+        margin: 0px;
+    }
+    
+    .npt{
+        font-size: 50px;
+        padding: 10px;
+        text-align: center;
+        font-family: 'Chango', cursive;
+        color: #414041;
+        margin-top: 0%;
+    }
+    
+    #btn{
+        font-size: 20px;
+        padding: 15px;
+        border-radius: 10px;
+        text-align: center;
+        font-family: 'Chango', cursive;
+        color: #414041;
+        margin-top: 3%;
+    }
+    
+    #btn:hover{
+        background-color: rgb(184, 184, 184);
+        cursor: pointer;
+    }
+    
+    .video{
+        display: none;
+    }
+    
+    .content {
+      position: fixed;
+      margin: 0px;
+      bottom: 0;
+      background: rgb(128, 128, 128);
+        color: #414041;
+        font-weight: bolder;
+      width: 100%;
+      padding-left: 20px;
+      padding-right: 20px;
+      font-family: 'Chango', cursive;
+    }
+
+    .content button{
+        margin-bottom: 20px !important;
+    }
+    
+    #myBtn {
+        font-family: 'Chango', cursive;
+      width: 200px;
+      font-size: 18px;
+      padding: 10px;
+      border: none;
+      background: #67b7ce;
+      color: #fff;
+      cursor: pointer;
+    }
+    
+    #myBtn:hover {
+      background: #ddd;
+      color: black;
+    }
+    </style>
 </head>
 <body>
 <!-- Transition -->
 <div class="transition is-active"></div>
 
 <div class="navbar">
-  <a href="index.html">Home</a>
+  <a href="index.html" id="home">Home</a>
  <div class="dropdown">
     <button class="dropbtn">Simulations
       <i class=""></i>
@@ -41,8 +156,181 @@
     <div class="dropdown-content">
       <a href="drawing.html">Drawing Editor</a>
       <a href="codeeditor.html">Coding Editor</a>
-
     </div>
   </div>
+</div>
+<div id="towndiv">
+    <h1 id="header">Weather Visualizer</h1>
+    <input type="text" class="npt" id="npt" autocomplete="off" autocorrect="off" autocapitalize="off" style="display: inline;">
+    <hr style="border: none; margin: 5px;">
+    <select name="" class="npt" id="snpt" style="font-size: 30px; margin: 0px;">
+        <option value="imperial">Fahrenheit</option>
+        <option value="metric">Celcius</option>
+    </select>
+    <br>
+    <button id="btn" onclick="runWeather()">Show my weather</button>
+</div>
 
-	<embed src="https://codezhifty.github.io/codezhifty/projects/weathervisualizer/index.html" style="width: 100vw; height: 94vh;">
+<div id="myVideo">
+    <video autoplay muted loop id="rainy" class="video">
+        <source src="./videos/Rainy.mp4" type="video/mp4">
+    </video>
+    <video autoplay muted loop id="cloudy" class="video">
+        <source src="./videos/Cloudy.mp4" type="video/mp4">
+    </video>
+    <video autoplay muted loop id="snowy" class="video">
+        <source src="./videos/Snowy.mp4" type="video/mp4">
+    </video>
+    <video autoplay muted loop id="sunny" class="video">
+        <source src="./videos/Sunny.mp4" type="video/mp4">
+    </video>
+    <video autoplay muted loop id="stormy" class="video">
+        <source src="./videos/Stormy.mp4" type="video/mp4">
+    </video>
+    <div class="content">
+        <h1 id="weatherState">What Weather</h1>
+        <p>Weather is the state of the atmosphere, describing for example the degree to which it is hot or cold, wet or dry, calm or stormy, clear or cloudy. On Earth, most weather phenomena occur in the lowest level of the planet's atmosphere, the troposphere, just below the stratosphere. Weather refers to day-to-day temperature and precipitation activity, whereas climate is the term for the averaging of atmospheric conditions over longer periods of time. When used without qualification, "weather" is generally understood to mean the weather of Earth.</p>
+        <button id="myBtn" onclick="location.reload()">Back</button>
+    </div>
+</div>
+
+<div id="pagediv">
+    <h1 id="degreeh1">20 degrees</h1>
+</div>
+<script>
+    let temp = [];
+    let desc = [];
+    function runWeather(){
+        const input = document.getElementById("npt");
+        const select = document.getElementById("snpt");
+        const degreeh1 = document.getElementById("degreeh1");
+        const towndiv = document.getElementById("towndiv");
+        const pagediv = document.getElementById("pagediv");
+        const myvideo = document.getElementById("myVideo");
+        const state = document.getElementById("weatherState");
+        const rainy = document.getElementById("rainy");
+        const cloudy = document.getElementById("cloudy");
+        const snowy = document.getElementById("snowy");
+        const sunny = document.getElementById("sunny");
+        const stormy = document.getElementById("stormy");
+    
+        let temp = [];
+        let desc = [];
+        units = select.value;
+        console.log(units);
+        town = input.value;
+        fetch("https://api.openweathermap.org/data/2.5/weather?q=" + town + "&units=" + units + "&appid=f4e80e2071fcae0bd7c122d2f82fd284")
+        .then(response => response.json())
+        .then(data => {
+            console.log(data)
+            var tempValue = data['main']['temp'];
+            var nameValue = data['name'];
+            var descValue = data['weather'][0]['main'];    
+            temp.push(tempValue);
+            desc.push(descValue);
+            console.log(tempValue + " " + descValue)
+        })
+        if(units == "metric"){
+            setTimeout(() => {
+            degreeh1.innerHTML = temp[0] + " degrees";
+            pagediv.style.display = "block";
+            towndiv.style.display = "none";
+            myvideo.style.display = "block";
+            document.body.style.background = "none";
+    
+            if(desc[0] == "Snow" || temp[0] <= 0){
+                snowy.style.display = "block";
+                state.innerHTML = "Snow";
+            }
+            else if(desc[0] == "Rain"){
+                rainy.style.display = "block";
+                state.innerHTML = "Rain";
+            }
+            else if(desc[0] == "Drizzle"){
+                rainy.style.display = "block";
+                state.innerHTML = "Drizzle";
+            }
+            else if(desc[0] == "Thunderstorm"){
+                stormy.style.display = "block";
+                state.innerHTML = "Thunderstorm";
+            }
+            else if(desc[0] == "Clouds"){
+                if(temp[0] <= 18){
+                    cloudy.style.display = "block";
+                    state.innerHTML = "Clouds";
+                }
+                else if(temp[0] >= 18){
+                    sunny.style.display = "block";
+                    state.innerHTML = "Sunny";
+                }
+            }
+            else if(desc[0] == "Clear"){
+                if(temp[0] <= 18){
+                    sunny.style.display = "block";
+                    state.innerHTML = "Clear";
+                }
+                else if(temp[0] >= 18){
+                    sunny.style.display = "block";
+                    state.innerHTML = "Sunny";
+                }
+            }
+            
+            }, 1000);
+        }
+        else{
+            setTimeout(() => {
+            degreeh1.innerHTML = temp[0] + " degrees";
+            pagediv.style.display = "block";
+            towndiv.style.display = "none";
+            myvideo.style.display = "block";
+            document.body.style.background = "none";
+    
+            if(desc[0] == "Snow" || temp[0] <= 0){
+                snowy.style.display = "block";
+                state.innerHTML = "Snow";
+            }
+            else if(desc[0] == "Rain"){
+                rainy.style.display = "block";
+                state.innerHTML = "Rain";
+            }
+            else if(desc[0] == "Drizzle"){
+                rainy.style.display = "block";
+                state.innerHTML = "Drizzle";
+            }
+            else if(desc[0] == "Thunderstorm"){
+                stormy.style.display = "block";
+                state.innerHTML = "Thunderstorm";
+            }
+            else if(desc[0] == "Clouds"){
+                if(temp[0] <= 64.4){
+                    cloudy.style.display = "block";
+                    state.innerHTML = "Clouds";
+                }
+                else if(temp[0] >= 64.4){
+                    sunny.style.display = "block";
+                    state.innerHTML = "Sunny";
+                }
+            }
+            else if(desc[0] == "Clear"){
+                if(temp[0] <= 64.4){
+                    sunny.style.display = "block";
+                    state.innerHTML = "Clear";
+                }
+                else if(temp[0] >= 64.4){
+                    sunny.style.display = "block";
+                    state.innerHTML = "Sunny";
+                }
+            }
+            
+            }, 1000);
+        }
+    }
+    
+    var input = document.getElementById("npt");
+    input.addEventListener("keyup", function(event) {
+      if (event.keyCode === 13) {
+       event.preventDefault();
+       document.getElementById("btn").click();
+      }
+    });
+    </script>
